@@ -1,0 +1,30 @@
+.navbar{
+    text-align: center;
+    border-bottom: 1px solid #333333;
+    width: 100%;
+    display:inline-block;
+    float: none;
+    color: #333333 !important;
+}
+
+.nav-link {
+    color: #333333;
+}
+
+
+
+.hoverable{
+    color: #333333 !important;
+  backface-visibility: hidden;
+  vertical-align: middle;
+  position:relative;
+
+}
+
+.hoverable:hover, .hoverable:active, .hoverable:focus{
+  transform: translateY(-5px);
+}
+.hoverable:hover:before, .hoverable:active:before, .hoverable:focus:before{
+  opacity: 1;
+  transform: translateY(-5px);
+}

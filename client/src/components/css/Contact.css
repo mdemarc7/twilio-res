@@ -1,0 +1,29 @@
+.contact{
+    height: 100vh;
+    margin-top: 60px;
+}
+.btn{
+    background-color: lightgreen;
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-weight: 700;
+    line-height: 2;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+button{
+    margin-top: 20px;
+}
+textarea{
+    width: 80%;
+  height: 150px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 20px;
+}
+#code{
+    margin-top: 100px;
+}
