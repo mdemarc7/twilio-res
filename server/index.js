@@ -8,8 +8,14 @@ const accountSid = process.env.ACCOUNT_SID;
 const myNumber = process.env.MY_NUMBER;
 const authToken = process.env.AUTH_TOKEN;
 const client = new twilio(accountSid,authToken);
+const bodyParser = require('body-parser');
 
 const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 app.use(cors()); // blocks browser restricting data
 
@@ -17,8 +23,11 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 const PORT = process.env.PORT || 3001;
 
+app.get("/api", (req, res) => {
+    res.json({ message: "Hello from server!" });
+  });
 app.get('/sendText', (req, res) => {
-
+    console.log(hikujhkjh);
     const {textMessage} = req.query;
     client.messages.create({
         body:textMessage,
@@ -36,6 +45,7 @@ app.get('/sendText', (req, res) => {
 })
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
+    console.log('welcome');
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
   });
 app.listen(PORT, () => console.log(`Server ${PORT}`)); 

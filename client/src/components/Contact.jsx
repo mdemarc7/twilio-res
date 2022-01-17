@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import './css/Contact.css';
 class Contact extends React.Component{
@@ -12,11 +13,10 @@ class Contact extends React.Component{
 
     }
 
+
     sendText = _ =>{
         const { text } = this.state
-        
-
-        fetch(`/sendText?textMessage=${text.textMessage}`)
+        axios.get(`/sendText?textMessage=${text.textMessage}`)
         .catch(error => {
             console.error('There was an error!!', error);
             this.setState({ showing: false });
@@ -51,8 +51,6 @@ class Contact extends React.Component{
                     this.setState({ showing: true });
                 }.bind(this),5000); 
                 }
-                
-
         });
     }
  render() {
