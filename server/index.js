@@ -3,11 +3,9 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const express = require('express');
 const cors = require('cors');
 const twilio = require('twilio');
-console.log(process.env)
 
 const accountSid = process.env.ACCOUNT_SID;
 const myNumber = process.env.MY_NUMBER;
-console.log(process.env.ACCOUNT_SID);
 const authToken = process.env.AUTH_TOKEN;
 const client = new twilio(accountSid,authToken);
 
@@ -19,7 +17,7 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 const PORT = process.env.PORT || 3001;
 
-app.get('/send-text', (req, res) => {
+app.get('/sendText', (req, res) => {
 
     const {textMessage} = req.query;
     client.messages.create({
