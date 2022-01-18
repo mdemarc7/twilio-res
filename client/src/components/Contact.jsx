@@ -32,7 +32,7 @@ class Contact extends React.Component{
                 setTimeout(function(){
                     this.setState({ showing: true });
                     this.setState({ error: false });
-                    //this.setState({errorMessage: 'Message did not send'})
+                    this.setState({errorMessage: 'Message did not send'})
                 }.bind(this),2000); 
             }
 
