@@ -16,19 +16,22 @@ class Contact extends React.Component{
 
     sendText = _ =>{
         const { text } = this.state
-        axios.get(`/sendText?textMessage=${text.textMessage}`)
+        axios.get('/sendText',{
+          params: {
+            textMessage: text.textMessage
+          }
+        })
         .catch(error => {
             console.error('There was an error!!', error);
             this.setState({ showing: false });
         })
         .then((response) => {
-            if(!response.ok){
-                response.text().then((data) => {
-                    console.log(data);
-                    if(data==="21602"){
+            if(response.status != 200){
+              console.log(response);
+                console.log(response.data);
+                    if(response.data==="21602"){
                         this.setState({errorMessage: 'Message body is required'})
                     }
-                });
                 this.setState({ showing: false });
                 this.setState({ error: true });
                 setTimeout(function(){
@@ -37,7 +40,6 @@ class Contact extends React.Component{
                 }.bind(this),2000); 
             }
             else{
-                console.log('hi');
                 this.setState({sent: true});
                 this.setState({ showing: false });
                 this.setState(prevState => ({
@@ -81,7 +83,7 @@ class Contact extends React.Component{
 
           </div>
           <div id="code">
-              <p>See the code for this project <a href="https://github.com/mdemarc7/Resume-website">HERE</a></p>
+              <p>See the code for this project <a href="https://github.com/mdemarc7/twilio-res">HERE</a></p>
           </div>
         </div>
       </div>

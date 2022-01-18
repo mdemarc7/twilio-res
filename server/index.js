@@ -27,7 +27,7 @@ app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
   });
 app.get('/sendText', (req, res) => {
-    console.log(hikujhkjh);
+    
     const {textMessage} = req.query;
     client.messages.create({
         body:textMessage,
@@ -36,7 +36,7 @@ app.get('/sendText', (req, res) => {
 
     }).then((message) => {console.log(message.body)
         res.status(200);
-        res.send();
+        res.send('good');
     })
     .catch(e => { console.error('Got an error:', e.code, e.message);
     const code = e.code;
