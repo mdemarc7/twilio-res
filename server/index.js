@@ -36,11 +36,11 @@ app.get('/sendText', (req, res) => {
 
     }).then((message) => {console.log(message.body)
         res.status(200);
-        res.send('good');
+        res.send();
     })
     .catch(e => { console.error('Got an error:', e.code, e.message);
     const code = e.code;
-    res.status(400).send(code.toString());
+    res.status(400).send(e);
      });
 })
 // All other GET requests not handled before will return our React app

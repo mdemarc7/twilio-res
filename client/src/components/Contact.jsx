@@ -15,7 +15,7 @@ class Contact extends React.Component{
 
 
     sendText = _ =>{
-        const { text } = this.state
+        const { text } = this.state;
         axios.get('/sendText',{
           params: {
             textMessage: text.textMessage
@@ -23,13 +23,8 @@ class Contact extends React.Component{
         })
         .catch(error => {
             console.error('There was an error!!', error);
-            this.setState({ showing: false });
-        })
-        .then((response) => {
-            if(response.status != 200){
-              console.log(response);
-                console.log(response.data);
-                    if(response.data==="21602"){
+            if(error.response.status !== 200){
+                    if(error.response.data.code===21602){
                         this.setState({errorMessage: 'Message body is required'})
                     }
                 this.setState({ showing: false });
@@ -37,22 +32,27 @@ class Contact extends React.Component{
                 setTimeout(function(){
                     this.setState({ showing: true });
                     this.setState({ error: false });
+                    //this.setState({errorMessage: 'Message did not send'})
                 }.bind(this),2000); 
             }
-            else{
-                this.setState({sent: true});
-                this.setState({ showing: false });
-                this.setState(prevState => ({
-                    text: {                   
-                        ...prevState.text,    
-                        textMessage: ''       
-                    }
-                }))
-                setTimeout(function(){
-                    this.setState({sent:false});
-                    this.setState({ showing: true });
-                }.bind(this),5000); 
-                }
+
+            
+        })
+        .then((response) => {
+          if(response){
+          this.setState({sent: true});
+          this.setState({ showing: false });
+          this.setState(prevState => ({
+              text: {                   
+                  ...prevState.text,    
+                  textMessage: ''       
+              }
+          }))
+          setTimeout(function(){
+              this.setState({sent:false});
+              this.setState({ showing: true });
+          }.bind(this),5000); 
+        }     
         });
     }
  render() {
