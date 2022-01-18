@@ -25,7 +25,7 @@ function About() {
                 I'm intrigued and amazed to see Twilio's prevelance in several popular applications, yet still many unknowingly take advantage of Twilio’s vast options of products.
                 </li>
                 <li>
-                I share professional value with Twilio, notably "No shenanigans", "Draw the owl", and "Empower others".
+                I share professional values with Twilio, notably "No shenanigans", "Draw the owl", and "Empower others".
                 </li>
             </ul>
           </div>

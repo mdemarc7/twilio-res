@@ -35,6 +35,7 @@ function Home() {
                 <Badge className="badge" bg="secondary">.NET</Badge>
                 <Badge className="badge" bg="secondary">Visual Basic</Badge>
                 <Badge className="badge" bg="secondary">C++</Badge>
+                <Badge className="badge" bg="secondary">Node.js</Badge>
             </h5>
           </div>
         </div>
